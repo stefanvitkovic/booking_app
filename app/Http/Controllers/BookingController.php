@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Reservation;
 
+use DB;
+
 class BookingController extends Controller
 {
     public function index(){
@@ -16,6 +18,14 @@ class BookingController extends Controller
     	$new_reservation = new Reservation($request->all());
     	$new_reservation->status = '0';
     	$new_reservation->save();
-    	return view('test',['x'=>$request->input()]);
+
+    	$last = Reservation::orderBy('created_at', 'desc')->first();
+
+    	$checkOut = $request->check_out;
+        $check_out = date('Y-m-d',strtotime($checkOut . "-1 days"));
+
+        DB::statement("call filldates('$last->id','$request->check_in','$check_out')");
+    	
+    	return view('test',['x'=>$check_out]);
     }
 }
