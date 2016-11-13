@@ -14,3 +14,5 @@
 Route::get('/', 'BookingController@index');
 
 Route::post('/','BookingController@store')->middleware('availability');
+
+Route::get('confirmation','BookingController@confirmation')->middleware('confirmation');

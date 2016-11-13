@@ -8,6 +8,10 @@ use App\Reservation;
 
 use DB;
 
+use App\Mail\ConfirmationMail;
+
+use Illuminate\Support\Facades\Mail;
+
 class BookingController extends Controller
 {
     public function index(){
@@ -26,6 +30,17 @@ class BookingController extends Controller
 
         DB::statement("call filldates('$last->id','$request->check_in','$check_out')");
     	
-    	return view('test');
+        Mail::to('test@gmail.com')->send(new ConfirmationMail($last->id));
+
+    	return response()->view('test')->cookie('reservation_id',"$last->id",10);
+    }
+
+    public function confirmation(Request $request){
+        $id = $request->cookie('reservation_id');
+        $reservation = Reservation::findOrFail($id);
+        $reservation->status = '1';
+        $reservation->save();
+
+        return response('reservation complited');
     }
 }
