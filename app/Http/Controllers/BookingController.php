@@ -26,6 +26,6 @@ class BookingController extends Controller
 
         DB::statement("call filldates('$last->id','$request->check_in','$check_out')");
     	
-    	return view('test',['x'=>$check_out]);
+    	return view('test');
     }
 }

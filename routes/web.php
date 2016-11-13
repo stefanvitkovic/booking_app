@@ -13,4 +13,4 @@
 
 Route::get('/', 'BookingController@index');
 
-Route::post('/','BookingController@store');
+Route::post('/','BookingController@store')->middleware('availability');

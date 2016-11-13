@@ -39,16 +39,15 @@
             <input type="date" class="form-control" id="check_out">
           </div>
           <button id='send' type="submit" class="btn btn-default">Submit</button>
-        </form>
+        </form><br>
+        <div id='div' class='text-center'">
+        <p id='message'></p>
+        </div>
       </div>
     </div>
   </div>
-  @if (session('succes'))
-    <div class="alert alert-success">
-        {{ session('succes') }}
-    </div>
-  @endif
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
     
   </body>

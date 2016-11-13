@@ -18,8 +18,14 @@ $(document).ready(function(){
 	  url: "/",
 	  data: {check_in:checkIn,check_out:checkOut},
 	  success: function(data){
-	    console.log(data);
+	  	$('#div').removeClass('alert alert-danger');
+	  	$('#div').addClass('alert alert-success');
+	  	$('#message').text('Please check your email and confirm reservation !');
+	    console.log('prosao');
 	  },error:function(){
+	  	$('#div').removeClass('alert alert-succes');
+	  	$('#div').addClass('alert alert-danger');
+	  	$('#message').text('Error');
 	    console.log('error!');
 	  }
 	  });
