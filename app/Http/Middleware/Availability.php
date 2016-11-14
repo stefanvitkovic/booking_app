@@ -17,7 +17,7 @@ class Availability
      */
     public function handle($request, Closure $next)
     {
-        $check = DB::select("SELECT dates FROM days WHERE dates BETWEEN :check_in AND :check_out",['check_in' => "$request->check_in",'check_out' => "$request->check_out"]);
+        $check = DB::select("SELECT dates FROM days WHERE dates BETWEEN :check_in AND :check_out AND apartment_id = :ap_id",['check_in' => "$request->check_in",'check_out' => "$request->check_out",'ap_id' => "$request->apartment_id"]);
         
         $now = date('Y-m-d');
      

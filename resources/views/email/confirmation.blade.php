@@ -30,6 +30,8 @@
     <div class='row'><br><br>
       <div class='col-md-6 col-md-offset-3'>
         <a href="{{ action('BookingController@confirmation') }}"><p>Click here to confirm your reservation</p></a>
+        <p>Check in: {{$reservation->check_in}}</p>
+        <p>Check out: {{$reservation->check_out}}</p>
       </div>
     </div>
   </div>

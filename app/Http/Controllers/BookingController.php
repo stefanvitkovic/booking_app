@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Reservation;
 
+use App\Apartment;
+
 use DB;
 
 use App\Mail\ConfirmationMail;
@@ -15,7 +17,8 @@ use Illuminate\Support\Facades\Mail;
 class BookingController extends Controller
 {
     public function index(){
-    	return view('index');
+        $apartments = Apartment::all();
+    	return response()->view('index',['apartments'=>$apartments]);
     }
 
     public function store(Request $request){
@@ -27,12 +30,15 @@ class BookingController extends Controller
 
     	$checkOut = $request->check_out;
         $check_out = date('Y-m-d',strtotime($checkOut . "-1 days"));
-
-        DB::statement("call filldates('$last->id','$request->check_in','$check_out')");
     	
-        Mail::to('test@gmail.com')->send(new ConfirmationMail($last->id));
+        $reservation = Reservation::findOrFail($last->id);
+        Mail::to('test@gmail.com')->send(new ConfirmationMail($reservation));
 
-    	return response()->view('test')->cookie('reservation_id',"$last->id",10);
+        return response('sent')
+        ->cookie('reservation_id',"$last->id",10)
+        ->cookie('apartment',"$request->apartment_id",10)
+        ->cookie('check_in',"$request->check_in",10)
+        ->cookie('check_out',"$check_out",10);
     }
 
     public function confirmation(Request $request){
@@ -41,6 +47,11 @@ class BookingController extends Controller
         $reservation->status = '1';
         $reservation->save();
 
+        $apartment_id = $request->cookie('apartment');
+        $check_in = $request->cookie('check_in');
+        $check_out = $request->cookie('check_out');
+        
+        DB::statement("call filldates('$id','$apartment_id','$check_in','$check_out')");
         return response('reservation complited');
     }
 }

@@ -1,11 +1,12 @@
 $(document).ready(function(){
-
+	
 	$('#send').click(function(event){
 	  event.preventDefault();
 
 	var checkIn = $("#check_in").val();
 	var checkOut = $("#check_out").val();
-	// console.log(checkIn + ' ' + checkOut);
+	var apartment_val = $('#sel').val();
+	// console.log(apartment_val);
 
 	$.ajaxSetup({
 	  headers: {
@@ -16,17 +17,17 @@ $(document).ready(function(){
 	$.ajax({
 	  type: 'post',
 	  url: "/",
-	  data: {check_in:checkIn,check_out:checkOut},
+	  data: {check_in:checkIn,check_out:checkOut,apartment_id:apartment_val},
 	  success: function(data){
 	  	$('#div').removeClass('alert alert-danger');
 	  	$('#div').addClass('alert alert-success');
 	  	$('#message').text('Please check your email and confirm reservation !');
-	    console.log('prosao');
+	    console.log(data);
 	  },error:function(){
 	  	$('#div').removeClass('alert alert-succes');
 	  	$('#div').addClass('alert alert-danger');
-	  	$('#message').text('Error');
-	    console.log('error!');
+	  	$('#message').text('Room is not available');
+	    console.log('error');
 	  }
 	  });
 	});

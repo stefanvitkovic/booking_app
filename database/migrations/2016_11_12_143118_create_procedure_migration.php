@@ -13,17 +13,17 @@ class CreateProcedureMigration extends Migration
      */
     public function up()
     {
-        DB::unprepared('CREATE PROCEDURE filldates( IN reservations_id VARCHAR(256), IN dateStart DATE, IN dateEnd DATE)  BEGIN 
+        DB::unprepared('CREATE PROCEDURE filldates( IN reservations_id VARCHAR(256), IN apartment VARCHAR(256), IN dateStart DATE, IN dateEnd DATE)  BEGIN 
 
                 DECLARE adate date;
 
                 WHILE dateStart <= dateEnd DO
 
-                    SET adate = (SELECT dates FROM days WHERE dates = dateStart);
+                    SET adate = (SELECT dates FROM days WHERE dates = dateStart AND apartment_id = apartment);
 
                     IF adate IS NULL THEN BEGIN
 
-                        INSERT INTO days (reservations_id,dates) VALUES (reservations_id,dateStart);
+                        INSERT INTO days (reservations_id,apartment_id,dates) VALUES (reservations_id,apartment,dateStart);
 
                     END; END IF;
 

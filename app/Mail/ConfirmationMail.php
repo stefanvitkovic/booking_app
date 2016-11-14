@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use App\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,11 +16,11 @@ class ConfirmationMail extends Mailable
      *
      * @return void
      */
-    
+    public $reservation;
 
-    public function __construct()
+    public function __construct(Reservation $reservation)
     {
-        
+        $this->reservation = $reservation;   
     }
 
     /**

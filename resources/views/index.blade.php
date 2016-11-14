@@ -38,6 +38,15 @@
             <label for="check_out">Check Out</label>
             <input type="date" class="form-control" id="check_out">
           </div>
+          <div class="form-group">
+            <label for="sel">Select apartment:</label>
+            <select class="form-control" id="sel">
+            <option selected disabled>Choose here</option>
+            @foreach($apartments as $apartment)
+              <option value="{{$apartment->id}}">{{$apartment->name}}</option>
+            @endforeach
+            </select>
+          </div>
           <button id='send' type="submit" class="btn btn-default">Submit</button>
         </form><br>
         <div id='div' class='text-center'">

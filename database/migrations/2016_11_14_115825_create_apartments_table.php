@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDaysTable extends Migration
+class CreateApartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('days',function(Blueprint $table){
-            $table->integer('reservations_id')->unsigned();
-            $table->foreign('reservations_id')->references('id')->on('reservations')->onDelete('cascade');
-            $table->integer('apartment_id');
-            $table->date('dates');
-            $table->timestamps();
+        Schema::create('apartments',function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('price');
             $table->engine = 'InnoDB';
         });
     }
@@ -30,6 +28,6 @@ class CreateDaysTable extends Migration
      */
     public function down()
     {
-        Schema::drop('days');
+        Schema::drop('apartments');
     }
 }
