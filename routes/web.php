@@ -16,3 +16,9 @@ Route::get('/', 'BookingController@index');
 Route::post('/','BookingController@store')->middleware('availability');
 
 Route::get('confirmation','BookingController@confirmation')->middleware('confirmation');
+
+Route::get('apartments','ApartmentController@index')->name('apartments');
+
+Route::get('apartments/create','ApartmentController@create');
+
+Route::post('apartments','ApartmentController@store');

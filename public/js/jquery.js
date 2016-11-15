@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	
+	// $('#sel').change(function(){
+	// 	var price = $('option').attr('data-price');
+	// 	console.log(price);
+	// });
+
 	$('#send').click(function(event){
 	  event.preventDefault();
 

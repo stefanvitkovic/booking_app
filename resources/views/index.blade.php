@@ -25,6 +25,27 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Booking_app</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="{{route('apartments')}}">Apartments</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <body>
   <div class='container'>
     <div class='row'><br><br>
@@ -43,7 +64,7 @@
             <select class="form-control" id="sel">
             <option selected disabled>Choose here</option>
             @foreach($apartments as $apartment)
-              <option value="{{$apartment->id}}">{{$apartment->name}} - {{$apartment->price}}$ / per night</option>
+              <option data-price="{{$apartment->price}}" value="{{$apartment->id}}">{{$apartment->name}} - {{$apartment->price}}$ / per night</option>
             @endforeach
             </select>
           </div>
