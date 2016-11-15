@@ -29,9 +29,10 @@
   <div class='container'>
     <div class='row'><br><br>
       <div class='col-md-6 col-md-offset-3'>
+        <p>Check in: {{date('l d \of F Y',strtotime($reservation->check_in))}} at 14:00 p.m</p>
+        <p>Check out: {{date('l d \of F Y',strtotime($reservation->check_out))}} at 10:00 a.m</p>
+        <h3>Price: {{$reservation->bill}}$</h3>
         <a href="{{ action('BookingController@confirmation') }}"><p>Click here to confirm your reservation</p></a>
-        <p>Check in: {{$reservation->check_in}}</p>
-        <p>Check out: {{$reservation->check_out}}</p>
       </div>
     </div>
   </div>

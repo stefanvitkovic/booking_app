@@ -22,8 +22,13 @@ class BookingController extends Controller
     }
 
     public function store(Request $request){
+        $days_of_staying = ((strtotime($request->check_out . "-1 days")) - (strtotime($request->check_in))) / 86400;
+        $get_price = Apartment::findOrFail($request->apartment_id);
+        $price = $get_price->price;
+
     	$new_reservation = new Reservation($request->all());
     	$new_reservation->status = '0';
+        $new_reservation->bill = $days_of_staying * $price;
     	$new_reservation->save();
 
     	$last = Reservation::orderBy('created_at', 'desc')->first();

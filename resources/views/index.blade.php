@@ -43,7 +43,7 @@
             <select class="form-control" id="sel">
             <option selected disabled>Choose here</option>
             @foreach($apartments as $apartment)
-              <option value="{{$apartment->id}}">{{$apartment->name}}</option>
+              <option value="{{$apartment->id}}">{{$apartment->name}} - {{$apartment->price}}$ / per night</option>
             @endforeach
             </select>
           </div>
