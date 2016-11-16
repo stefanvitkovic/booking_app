@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
+
+    public function check(Request $request){
+
+        $days_of_staying = ((strtotime($request->check_out . "-1 days")) - (strtotime($request->check_in))) / 86400;
+        $get_price = Apartment::findOrFail($request->apartment_id);
+        $price = $get_price->price;
+        $response = "Price : ".$days_of_staying * $price ." $";
+
+        return response($response);
+    }
+
     public function index(){
         $apartments = Apartment::all();
     	return response()->view('index',['apartments'=>$apartments]);

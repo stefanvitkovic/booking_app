@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'availability' => \App\Http\Middleware\Availability::class,
-        'confirmation' => \App\Http\Middleware\Confirmation::class
+        'confirmation' => \App\Http\Middleware\Confirmation::class,
+        'check' => \App\Http\Middleware\Check::class
     ];
 }

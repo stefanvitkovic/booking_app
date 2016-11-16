@@ -18,7 +18,7 @@ class ApartmentController extends Controller
     }
 
     public function store(Request $request){
-    	$new_apartment = new Apartment($request->all());
+    	$new_apartment = new Apartment($request->input());
     	$new_apartment->save();
     	$apartments = Apartment::all();
     	return response()->view('apartments',['apartments'=>$apartments]);

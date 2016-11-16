@@ -15,10 +15,12 @@ Route::get('/', 'BookingController@index');
 
 Route::post('/','BookingController@store')->middleware('availability');
 
+Route::post('check','BookingController@check')->middleware('check');
+
 Route::get('confirmation','BookingController@confirmation')->middleware('confirmation');
 
 Route::get('apartments','ApartmentController@index')->name('apartments');
 
 Route::get('apartments/create','ApartmentController@create');
 
-Route::post('apartments','ApartmentController@store');
+Route::post('apartments','ApartmentController@store')->name('add_ap');
