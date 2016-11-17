@@ -19,7 +19,7 @@ class BookingController extends Controller
 
     public function check(Request $request){
 
-        $days_of_staying = ((strtotime($request->check_out . "-1 days")) - (strtotime($request->check_in))) / 86400;
+        $days_of_staying = ((strtotime($request->check_out)) - (strtotime($request->check_in))) / 86400;
         $get_price = Apartment::findOrFail($request->apartment_id);
         $price = $get_price->price;
         $response = "Price : ".$days_of_staying * $price ." $";
@@ -33,7 +33,7 @@ class BookingController extends Controller
     }
 
     public function store(Request $request){
-        $days_of_staying = ((strtotime($request->check_out . "-1 days")) - (strtotime($request->check_in))) / 86400;
+        $days_of_staying = ((strtotime($request->check_out)) - (strtotime($request->check_in))) / 86400;
         $get_price = Apartment::findOrFail($request->apartment_id);
         $price = $get_price->price;
 

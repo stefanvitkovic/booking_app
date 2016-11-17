@@ -18,6 +18,10 @@ class ApartmentController extends Controller
     }
 
     public function store(Request $request){
+        $this->validate($request, [
+            'name' => 'required|unique:apartments|max:255',
+            'price' => 'required|numeric',
+        ]);
     	$new_apartment = new Apartment($request->input());
     	$new_apartment->save();
     	$apartments = Apartment::all();

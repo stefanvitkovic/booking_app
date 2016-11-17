@@ -20,8 +20,8 @@
 	    @foreach($apartments as $apartment)
 	      <tr>
 	        <td>{{$apartment->id}}</td>
-	        <td>{{$apartment->name}}</td>
-	        <td>{{$apartment->price}}</td>
+	        <td><a href="{{ route('show',['id' => $apartment->id]) }}">{{$apartment->name}}</a></td>
+	        <td>{{$apartment->price}} $</td>
 	        <td><a href="{{route('del',['id'=>$apartment->id])}}" class='btn btn-danger'>Delete</a></td>
 	      </tr>
 	    @endforeach

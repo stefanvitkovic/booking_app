@@ -36,6 +36,8 @@ $(document).ready(function(){
 	var checkOut = $("#check_out").val();
 	var apartment_val = $('#sel').val();
 
+	if(checkIn.length && checkOut.length && apartment_val.length > 0){
+
 	$.ajaxSetup({
 	  headers: {
 	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -58,6 +60,11 @@ $(document).ready(function(){
 	    console.log('error');
 	  }
 	  });
+	}else{
+	$('#div').removeClass('alert alert-info');
+  	$('#div').addClass('alert alert-danger');
+  	$('#message').text('Please fill the form');
+  	}
 	});
 
 });
