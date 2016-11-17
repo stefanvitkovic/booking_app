@@ -14,7 +14,6 @@
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		  <a href="{{route('apartments')}}" class="btn btn-default">Back</a>
-
 		</form>
 	</div>
 </div>

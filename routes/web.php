@@ -23,4 +23,8 @@ Route::get('apartments','ApartmentController@index')->name('apartments');
 
 Route::get('apartments/create','ApartmentController@create');
 
+Route::get('apartments/{id}','ApartmentController@show')->name('show');
+
 Route::post('apartments','ApartmentController@store')->name('add_ap');
+
+Route::get('apartments/{id}','ApartmentController@destroy')->name('del');

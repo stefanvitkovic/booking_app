@@ -23,4 +23,13 @@ class ApartmentController extends Controller
     	$apartments = Apartment::all();
     	return response()->view('apartments',['apartments'=>$apartments]);
     }
+
+    public function show(Apartment $id){
+        return view('apartment',['apartment'=>$id]);
+    }
+
+    public function destroy($id){
+        Apartment::destroy($id);
+        return back()->with(['message'=>'Apartment has been deleted']);
+    }
 }

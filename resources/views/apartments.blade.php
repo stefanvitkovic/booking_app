@@ -2,6 +2,11 @@
 @section('content')
 <div class='row'>
 	<div class='col-md-10'>
+	@if (session('message'))
+	    <div class="alert alert-danger">
+	        {{ session('message') }}
+	    </div>
+	@endif
 	<h2>Apartments</h2>
 		<table class="table table-hover">
 	    <thead>
@@ -16,7 +21,8 @@
 	      <tr>
 	        <td>{{$apartment->id}}</td>
 	        <td>{{$apartment->name}}</td>
-	        <td>{{$apartment->price}} $</td>
+	        <td>{{$apartment->price}}</td>
+	        <td><a href="{{route('del',['id'=>$apartment->id])}}" class='btn btn-danger'>Delete</a></td>
 	      </tr>
 	    @endforeach
 	    </tbody>
