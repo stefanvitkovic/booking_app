@@ -28,8 +28,8 @@ class ApartmentController extends Controller
     	return response()->view('apartments',['apartments'=>$apartments]);
     }
 
-    public function show(Apartment $id){
-        return view('apartment',['apartment'=>$id]);
+    public function show(Apartment $name){
+        return view('apartment',['apartment'=>$name]);
     }
 
     public function destroy($id){

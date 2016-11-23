@@ -23,7 +23,7 @@ Route::get('apartments','ApartmentController@index')->name('apartments');
 
 Route::get('apartments/create','ApartmentController@create');
 
-Route::get('apartments/{id}',['uses'=>'ApartmentController@show','as'=>'show']);
+Route::get('apartments/{name}',['uses'=>'ApartmentController@show','as'=>'show']);
 
 Route::post('apartments','ApartmentController@store')->name('add_ap');
 

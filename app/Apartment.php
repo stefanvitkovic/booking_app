@@ -8,4 +8,9 @@ class Apartment extends Model
 {
 	public $timestamps = false;
     protected $guarded=[];
+
+    public function getRouteKeyName()
+	{
+	    return 'name';
+	}
 }
